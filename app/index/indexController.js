@@ -1,14 +1,15 @@
-'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/index', {
-    templateUrl: 'index/indexView.html',
-    controller: 'View1Ctrl'
-  });
-}])
+angular.module('myApp')
 
-.controller('View1Ctrl', [function() {
+        .controller('indexCtrl', ['$scope', '$rootScope', '$templateRequest', function ($scope, $rootScope, $templateRequest) {
+                $scope.Authenticated = ($rootScope.isAuthenticated == 'undefined') ? false : $rootScope.isAuthenticated;
+                $templateRequest('shareTemplates/nonAuthMenu.html').then(function(html){
+                   console.log(html); 
+                   $scope.menu = html;
+                }).fail(function(data){
+                    console.log(data);
+                });
 
-}]);
+            }]);
+
