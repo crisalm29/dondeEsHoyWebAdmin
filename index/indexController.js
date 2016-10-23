@@ -1,14 +1,10 @@
-'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/index', {
-    templateUrl: 'index/indexView.html',
-    controller: 'indexCtrl'
-  });
-}])
+angular.module('myApp')
 
-.controller('indexCtrl', [function() {
+        .controller('indexCtrl', ['$scope', '$location', 'AuthenticationService', function ($scope, $location, AuthenticationService) {
+                $scope.Authenticated = AuthenticationService.isAuthenticated();
+                
 
-}]);
+            }]);
+

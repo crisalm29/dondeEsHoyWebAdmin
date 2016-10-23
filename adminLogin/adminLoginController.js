@@ -1,14 +1,38 @@
-'use strict';
 
-angular.module('myApp.adminLogin', ['ngRoute'])
+angular.module('myApp')
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/adminLogin', {
-    templateUrl: 'adminLogin/adminLoginView.html',
-    controller: 'adminLoginCtrl'
-  });
-}])
 
-.controller('adminLoginCtrl', [function() {
+        .controller('adminLoginCtrl', ['$scope', '$location', '$rootScope', '$cookies', 'AuthenticationService', function ($scope, $location, $rootScope, $cookies, AuthenticationService) {
 
-}]);
+
+                $scope.Authenticated = AuthenticationService.isAuthenticated();
+                if ($scope.Authenticated) {
+                    $location.path('/locales');
+                    return;
+                }
+                
+                $scope.loginError = false;
+                
+                $scope.login = function login() {
+
+                    $rootScope = (typeof $rootScope == 'undefined') ? {} : $rootScope;
+
+                    AuthenticationService.login($scope.usuario, $scope.password).then(function (response) {
+                        var result = response.data;
+                        if (result.result) {
+                            $rootScope.isAuthenticated = true;
+                            AuthenticationService.SetCredentials($scope.usuario, $scope.password);
+                            $location.path('/locales');
+                        }
+                        else{
+                            $scope.loginError = true;
+                        }
+                        console.log(response);
+                    }, function (err) {
+                        
+
+                    });
+                    return;
+                };
+
+            }]);

@@ -1,14 +1,12 @@
-'use strict';
 
-angular.module('myApp.register', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/register', {
-    templateUrl: 'register/registerView.html',
-    controller: 'registerCtrl'
-  });
-}])
+angular.module('myApp')
 
-.controller('registerCtrl', [function() {
-
+.controller('registerCtrl', ['$scope','$location','AuthenticationService',function($scope,$location,AuthenticationService) {
+        
+                $scope.Authenticated = AuthenticationService.isAuthenticated();
+                if($scope.Authenticated){
+                    $location.path('/main');
+                    return;
+                }
 }]);
