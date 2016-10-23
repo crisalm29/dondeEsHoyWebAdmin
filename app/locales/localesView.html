@@ -1,11 +1,12 @@
-
+<header>
+    <div menu-directive></div>
+</header>
 <div class="container">
     <div class="jumbotron">
-        <h2>Mis locales</h2>
-        <div  ng-if="misLocales.length != 0" >
-            <table class="table">
-            </table>
-        </div>
+        <h2>Mi establecimiento</h2>
+        <h3>{{establecimiento.name}}</h3><br>
+        <h4>Locales agregados: {{establecimiento.locals.length}}</h4>
+        <h4>Telefono: {{establecimiento.telefono}}</h4>
         <div ng-if="misLocales.length == 0" >
             <h3>No administras ningun local por el momento</h3>
         </div>

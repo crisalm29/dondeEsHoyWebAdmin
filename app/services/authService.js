@@ -1,52 +1,80 @@
 
 angular
         .module('myApp')
-        .service('AuthenticationService',['$http', '$cookies', '$rootScope', '$timeout', function ($http, $cookies, $rootScope, $timeout) {
-    var service = {};
+        .service('AuthenticationService', ['$http', '$cookies', '$rootScope', '$timeout', function ($http, $cookies, $rootScope, $timeout) {
+                var service = {};
 
-    service.Login = Login;
-    service.SetCredentials = SetCredentials;
-    service.ClearCredentials = ClearCredentials;
+                service.login = login;
+                service.SetCredentials = SetCredentials;
+                service.ClearCredentials = ClearCredentials;
+                service.isAuthenticated = isAuthenticated;
+                service.logout = logout;
 
-    return service;
+                return service;
 
-    function Login(username, password, callback) {
+                function register() {
+                    //$http.
+                }
 
-        /* Dummy authentication for testing, uses $timeout to simulate api call
-         ----------------------------------------------*/
-        $timeout(function () {
-            var response;
-        }, 1000);
 
-        /* Use this for real authentication
-         ----------------------------------------------*/
-        //$http.post('/api/authenticate', { username: username, password: password })
-        //    .success(function (response) {
-        //        callback(response);
-        //    });
+                function isAuthenticated() {
+                    //$cookies.putObject('globalsDondeEsHoy', {value: 'hola' });
+                    var user;
+                    try{
+                        user = $cookies.get('globalsDondeEsHoy');
+                    }catch(ex){
+                        return false;
+                    }
+                    return (typeof user != 'undefined');
+                }
 
-    }
 
-    function SetCredentials(username, password) {
-        var authdata = Base64.encode(username + ':' + password);
+                function login(username, password) {
+                    var p = $http({
+                        method: 'POST',
+                        url: 'http://kefon94-001-site1.etempurl.com//EstablishmentsAccounts/login',
+                        data: {
+                            email: username,
+                            password: password
+                        }
+                    }
+                    );
+                    return p.success(function (data) {
+                        return data;
+                    }).error(function (e) {
+                        var error = e;
+                    });
 
-        $rootScope.globals = {
-            currentUser: {
-                username: username,
-                authdata: authdata
-            }
-        };
 
-        //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-        $cookies.put('globals', $rootScope.globals);
-    }
+                }
 
-    function ClearCredentials() {
-        $rootScope.globals = {};
-        $cookies.remove('globals');
-        $http.defaults.headers.common.Authorization = 'Basic';
-    }
-}]);
+                function logout() {
+
+                    $cookies.remove('globalsDondeEsHoy');
+                }
+
+                function SetCredentials(username, password) {
+                    var authdata = Base64.encode(username + ':' + password);
+
+                    $rootScope.globals = {
+                        currentUser: {
+                            username: username,
+                            authdata: authdata
+                        }
+                    };
+
+                    //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+                    $cookies.put('globalsDondeEsHoy', username);
+                }
+
+
+
+                function ClearCredentials() {
+                    $rootScope.globals = {};
+                    $cookies.remove('globals');
+                    $http.defaults.headers.common.Authorization = 'Basic';
+                }
+            }]);
 
 // Base64 encoding service used by AuthenticationService
 var Base64 = {

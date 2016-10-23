@@ -43,9 +43,14 @@ angular.module('myApp', [
                         .when('/localesMapa', {
                             templateUrl: 'localesMapa/localesMapaView.html',
                             controller: 'localesMapaCtrl'
+                        })
+                        .when('/obtenerLocal/:key', {
+                            templateUrl: 'obtenerLocal/obtenerLocalView.html',
+                            controller: 'obtenerLocalCtrl'
                         });
 
                 $routeProvider.otherwise({redirectTo: '/index'});
+                //
             }])
 
 

@@ -6,7 +6,6 @@ angular
                 var p = $http({
                     method: 'POST',
                     url: "http://kefon94-001-site1.etempurl.com/googlePlaces",
-                    //url: "http://localhost:49986/googlePlaces",
                     data: {
                         lat: lat,
                         lng: long

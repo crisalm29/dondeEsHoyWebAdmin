@@ -1,0 +1,19 @@
+<header>
+    <div menu-directive></div>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <form class="form-group" ng-submit="obtenerLocal()" >
+            
+            <h3 class="form-group-heading">Completa el formulario obtener local</h3>
+            <label>Google key: {{googleKey}}</label><br>
+            <label for="inputZona">Zona:</label>
+            <input id="inputZona" class="form-control" placeholder="Zona" required autofocus  ng-model="zona"/><br>
+            <label for="inputTelefono">Telefono:</label>
+            <input id="inputTelefono" class="form-control" placeholder="Telefono" required autofocus  ng-model="tel"/><br>
+            <div class="form-actions">
+                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Obtener local" />
+            </div>
+        </form>
+    </div>
+</div>

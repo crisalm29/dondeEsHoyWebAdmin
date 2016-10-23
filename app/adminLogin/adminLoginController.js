@@ -2,26 +2,37 @@
 angular.module('myApp')
 
 
-        .controller('adminLoginCtrl', ['$scope','$location','$rootScope','AuthenticationService',function ($scope,$location,$rootScope,AuthenticationService) {
+        .controller('adminLoginCtrl', ['$scope', '$location', '$rootScope', '$cookies', 'AuthenticationService', function ($scope, $location, $rootScope, $cookies, AuthenticationService) {
+
+
+                $scope.Authenticated = AuthenticationService.isAuthenticated();
+                if ($scope.Authenticated) {
+                    $location.path('/locales');
+                    return;
+                }
                 
-                
+                $scope.loginError = false;
                 
                 $scope.login = function login() {
-                    
-                    $rootScope = (typeof $rootScope == 'undefined')? {} : $rootScope;
-                    
-                    $rootScope.isAuthenticated = true;
-                    AuthenticationService.SetCredentials($scope.username, $scope.password);
-                    $location.path('/main');
+
+                    $rootScope = (typeof $rootScope == 'undefined') ? {} : $rootScope;
+
+                    AuthenticationService.login($scope.usuario, $scope.password).then(function (response) {
+                        var result = response.data;
+                        if (result.result) {
+                            $rootScope.isAuthenticated = true;
+                            AuthenticationService.SetCredentials($scope.usuario, $scope.password);
+                            $location.path('/locales');
+                        }
+                        else{
+                            $scope.loginError = true;
+                        }
+                        console.log(response);
+                    }, function (err) {
+                        
+
+                    });
                     return;
-//                    AuthenticationService.Login($scope.username, $scope.password, function (response) {
-//                        if (response.success) {
-//                            AuthenticationService.SetCredentials(vm.username, vm.password);
-//                            $location.path('/');
-//                        } else {
-//                            vm.dataLoading = false;
-//                        }
-//                    });
                 };
-                
+
             }]);
