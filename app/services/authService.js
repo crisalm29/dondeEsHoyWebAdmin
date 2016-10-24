@@ -16,7 +16,10 @@ angular
                     //$http.
                 }
 
-
+                
+                
+                
+                
                 function isAuthenticated() {
                     //$cookies.putObject('globalsDondeEsHoy', {value: 'hola' });
                     var user;

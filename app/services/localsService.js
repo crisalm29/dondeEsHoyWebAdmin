@@ -35,10 +35,27 @@ angular.module('myApp')
 
                     });
                 }
+                
+                var localsByEstab = function (id){
+                    var p = $http({
+                        method: 'POST',
+                        url: "http://kefon94-001-site1.etempurl.com/Locals/infoByEstablishment",
+                        data: {
+                            establishment: id
+                        }
+
+                    });
+                    return p.success(function (data) {
+                        return data;
+                    }).error(function (e) {
+
+                    });
+                };
 
 
                 return {
                     localByGoogleKey: localByGoogleKey,
-                    addLocal: addLocal
+                    addLocal: addLocal,
+                    localsByEstab: localsByEstab
                 };
             }]);

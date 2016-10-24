@@ -47,6 +47,10 @@ angular.module('myApp', [
                         .when('/obtenerLocal/:key', {
                             templateUrl: 'obtenerLocal/obtenerLocalView.html',
                             controller: 'obtenerLocalCtrl'
+                        })
+                        .when('/message', {
+                            templateUrl: 'messageResult/messageView.html',
+                            controller: 'messageCtrl'
                         });
 
                 $routeProvider.otherwise({redirectTo: '/index'});

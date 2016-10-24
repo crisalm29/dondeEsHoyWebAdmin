@@ -1,0 +1,14 @@
+<header>
+    <div menu-directive></div>
+</header>
+<div class="container">
+    <div class="jumbotron">
+
+        <div ng-if="message==1" class="alert alert-success">
+            <h3>Tu accion ha sido realizada con exito.<span class="glyphicon glyphicon-ok" aria-hidden="true"></span></h3>
+        </div>
+        <div ng-if="message==2" class="alert alert-danger">
+            <h3>No se pudo realizar tu transferencia.<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></h3>
+        </div>
+    </div>
+</div>

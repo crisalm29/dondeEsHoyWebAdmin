@@ -2,30 +2,36 @@
 angular.module('myApp')
 
 
-        .controller('obtenerLocalCtrl', ['$scope','$rootScope','$location','$routeParams','AuthenticationService','localsService', function ($scope,$rootScope,$location,$routeParams,AuthenticationService,localsService) {
+        .controller('obtenerLocalCtrl', ['$scope', '$rootScope', '$location', '$routeParams', 'AuthenticationService', 'localsService', function ($scope, $rootScope, $location, $routeParams, AuthenticationService, localsService) {
                 $scope.Authenticated = AuthenticationService.isAuthenticated();
-                if(!$scope.Authenticated){
+                if (!$scope.Authenticated) {
                     $location.path('/index');
                     return;
                 }
-                $scope.logout = function(){
+                $scope.logout = function () {
                     AuthenticationService.logout();
                     $location.path('/index');
                 }
-                
+
                 $scope.key = $routeParams.key;
-                if(typeof $rootScope.keyGoogle == 'undefined') $location.path('/localesMapa');
+                if (typeof $rootScope.keyGoogle == 'undefined')
+                    $location.path('/localesMapa');
                 $scope.googleKey = $rootScope.keyGoogle;
-                
-                $scope.obtenerLocal = function(){
-                    localsService.addLocal($scope.key,$scope.zona,$scope.tel).then(function(data){
-                        var result = data.data;
-                        
-                    },
-                    function(error){
-                        
-                    })
+
+                $scope.obtenerLocal = function () {
+                    localsService.addLocal($scope.key, $scope.zona, $scope.tel).then(
+                            function (data) {
+                                var result = data.data;
+                                $rootScope.msgCode = 1;
+                                $location.path('/message');
+
+                            },
+                            function (error) {
+                                $rootScope.msgCode = 2;
+                                $location.path('/message');
+
+                            })
                 };
-                
-                
+
+
             }]);

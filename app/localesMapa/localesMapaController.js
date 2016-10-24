@@ -58,6 +58,7 @@ angular.module('myApp')
                                         localsService.localByGoogleKey(this.local.place_id).then(function (data) {
                                             var result = data.data;
                                             var divBotones = $('#botonObtener');
+                                            divBotones.empty();
                                             if (!result.valido) {
                                                 var boton = angular.element('<a href="#!/obtenerLocal/' + placeId + '" type="button" class="btn btn-primary" >Obtener local</a>');
                                                 boton.bind('click', function () {
@@ -74,6 +75,7 @@ angular.module('myApp')
 
                                                 });
                                         var img = $('#modalImg');
+                                        img.empty();
                                         if (typeof this.local.photos != 'undefined') {
                                             var photos;
                                             if (this.local.photos.length >= 1) {
