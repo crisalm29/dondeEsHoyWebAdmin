@@ -9,23 +9,37 @@ angular
                 service.ClearCredentials = ClearCredentials;
                 service.isAuthenticated = isAuthenticated;
                 service.logout = logout;
-
+                service.register = register;
                 return service;
 
-                function register() {
-                    //$http.
+                function register(establishment,establishment_account) {
+                    var p = $http({
+                        method: 'POST',
+                        url: 'http://kefon94-001-site1.etempurl.com/EstablishmentsUsers/addEstablishmentAndAccount',
+                        data: {
+                            establishment: establishment,
+                            establishment_account: establishment_account
+                        }
+                    }
+                    );
+                    return p.success(function (data) {
+                        return data;
+                    }).error(function (e) {
+                        var error = e;
+                    });
+
                 }
 
-                
-                
-                
-                
+
+
+
+
                 function isAuthenticated() {
                     //$cookies.putObject('globalsDondeEsHoy', {value: 'hola' });
                     var user;
-                    try{
+                    try {
                         user = $cookies.get('globalsDondeEsHoy');
-                    }catch(ex){
+                    } catch (ex) {
                         return false;
                     }
                     return (typeof user != 'undefined');

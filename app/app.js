@@ -51,6 +51,10 @@ angular.module('myApp', [
                         .when('/message', {
                             templateUrl: 'messageResult/messageView.html',
                             controller: 'messageCtrl'
+                        })
+                        .when('/promociones', {
+                            templateUrl: 'promociones/promocionesView.html',
+                            controller: 'promocionesCtrl'
                         });
 
                 $routeProvider.otherwise({redirectTo: '/index'});

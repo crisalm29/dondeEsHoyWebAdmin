@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/services/googlePlacesService.js</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/services/authService.js</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/shareTemplates/authMenu.html</file>
             <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/index.html</file>
-            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/localesMapa/localesMapaView.html</file>
-            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/localesMapa/localesMapaController.js</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/promociones/promocionesController.js</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/locales/localesView.html</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/promociones/promocionesView.html</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/locales/localesController.js</file>
             <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/app.js</file>
+            <file>file:/D:/DEV/dondeEsHoy/dondeEsHoyWebAdmin/app/services/promocionesService.js</file>
         </group>
     </open-files>
 </project-private>
