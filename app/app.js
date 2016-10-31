@@ -4,7 +4,8 @@
 angular.module('myApp', [
     'ngRoute',
     'ngCookies',
-    ,'ngSanitize',
+    'ngSanitize',
+    'ngFileUpload'
 ])
         .config(['$httpProvider', function ($httpProvider) {
                 $httpProvider.defaults.headers.common = {};
@@ -55,6 +56,14 @@ angular.module('myApp', [
                         .when('/promociones', {
                             templateUrl: 'promociones/promocionesView.html',
                             controller: 'promocionesCtrl'
+                        })
+                        .when('/registrySuccess', {
+                            templateUrl: 'registerSuccess/registerSuccessView.html',
+                            controller: 'registerSuccessCtrl'
+                        })
+                        .when('/promocionesAgregar', {
+                            templateUrl: 'promocionesAgregar/promocionesAgregarView.html',
+                            controller: 'promocionesAgregarCtrl'
                         });
 
                 $routeProvider.otherwise({redirectTo: '/index'});

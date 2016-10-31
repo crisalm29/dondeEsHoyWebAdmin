@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-        .controller('registerCtrl', ['$scope', '$location','$rootScope', 'AuthenticationService', function ($scope, $location,$rootScope, AuthenticationService) {
+        .controller('registerCtrl', ['$scope', '$location', '$rootScope', 'AuthenticationService', function ($scope, $location, $rootScope, AuthenticationService) {
 
                 $scope.Authenticated = AuthenticationService.isAuthenticated();
                 if ($scope.Authenticated) {
@@ -22,7 +22,7 @@ angular.module('myApp')
                     AuthenticationService.register($scope.establishment, $scope.establishment_account).then(function (data) {
                         var result = data.data;
                         if (result.result) {
-
+                            $location.path('/registrySuccess');
                         } else {
 
                             $rootScope.msgCode = 2;
@@ -31,7 +31,8 @@ angular.module('myApp')
 
                         console.log(data);
                     }, function (err) {
-                        console.log(err);
+                            $rootScope.msgCode = 2;
+                            $location.path('/message');
                     })
                 };
                 AuthenticationService.register()

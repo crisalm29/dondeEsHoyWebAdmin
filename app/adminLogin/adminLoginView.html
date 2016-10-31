@@ -18,6 +18,9 @@
                     <input type="checkbox" value="remember-me"> Recuerdame
                 </label>
             </div>
+            <div ng-if="loginError" class="alert alert-danger">
+                <h3>Revisa tu usuario o contraseña.</h3>
+            </div>
             <div class="form-actions">
                 <input type="submit" class="btn btn-lg btn-primary btn-block" value="Iniciar sesion" />
             </div>
