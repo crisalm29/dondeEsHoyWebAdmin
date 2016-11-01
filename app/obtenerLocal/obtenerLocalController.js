@@ -18,12 +18,18 @@ angular.module('myApp')
                     $location.path('/localesMapa');
                 $scope.googleKey = $rootScope.keyGoogle;
 
+                var establecimiento = parseInt(AuthenticationService.getEstablisment());
                 $scope.obtenerLocal = function () {
-                    localsService.addLocal($scope.key, $scope.zona, $scope.tel).then(
+                    localsService.addLocal($scope.key, $scope.zona, $scope.tel, establecimiento).then(
                             function (data) {
                                 var result = data.data;
-                                $rootScope.msgCode = 1;
+                                if (result.result) {
+                                    $rootScope.msgCode = 1;
+                                    $location.path('/message');
+                                } else {
+                                $rootScope.msgCode = 2;
                                 $location.path('/message');
+                                }
 
                             },
                             function (error) {

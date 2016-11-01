@@ -14,8 +14,9 @@ angular.module('myApp')
                     $location.path('/index');
                 }
                 
+                var establecimiento = parseInt(AuthenticationService.getEstablisment());
                 
-                localsService.localsByEstab(1).then(function(data){
+                localsService.localsByEstab(establecimiento).then(function(data){
                     var result = data.data;
                     $scope.misLocales = result.result;
                 },
@@ -23,7 +24,7 @@ angular.module('myApp')
                     
                 });
 
-                establishmentService.establismentInfoById(1).then(function (data) {
+                establishmentService.establismentInfoById(establecimiento).then(function (data) {
                     var resultados = data.data;
                     if(resultados.valido){
                         $scope.establecimiento = resultados.result;

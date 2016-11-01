@@ -9,7 +9,7 @@
         </div>
         <form ng-if="misLocales.length != 0"  ng-submit="agregarPromo()">
             <label for="nombrePromo">Nombre de la promocion</label>
-            <input type="text" id="nombrePromo" class="form-control" placeholder="Nombre" required="" autofocus="" ng-model="promo.nombre"><br>
+            <input type="text" id="nombrePromo" class="form-control" placeholder="Nombre" required="" autofocus="" ng-model="promo.name"><br>
             <label for="nombrePromo">Descripcion</label>
             <input type="text" id="nombrePromo" class="form-control" placeholder="Nombre" required="" autofocus="" ng-model="promo.description"><br>
 
@@ -28,7 +28,7 @@
 
             <label for="nombrePromo">Fecha de inicio</label>
             <div class='input-group date' id='datetimepicker1'>
-                <input type='date' class="form-control"  ng-model="promo.start_date"/>
+                <input type='date' class="form-control"  ng-model="fechas.start_date"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
@@ -36,17 +36,14 @@
 
             <label for="nombrePromo">Fecha de finalizacion</label>
             <div class='input-group date' id='datetimepicker1'>
-                <input type='date' class="form-control" ng-model="promo.due_date"/>
+                <input type='date' class="form-control" ng-model="fechas.due_date"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
             <br><br>
-            <button class="button" ngf-select="uploadFiles($file)" ng-model="file" name="file" ngf-pattern="'image/*'"
-                 ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
-                 ngf-resize="{width: 100, height: 100}">Select</button>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit" >Registrarme</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Agregar</button>
         </form>
     </div>
 </div>

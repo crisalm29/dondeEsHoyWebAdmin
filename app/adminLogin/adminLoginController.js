@@ -19,9 +19,9 @@ angular.module('myApp')
 
                     AuthenticationService.login($scope.usuario, $scope.password).then(function (response) {
                         var result = response.data;
-                        if (result.result) {
+                        if (result.result.login) {
                             $rootScope.isAuthenticated = true;
-                            AuthenticationService.SetCredentials($scope.usuario, $scope.password);
+                            AuthenticationService.SetCredentials($scope.usuario, $scope.password,result.result.establishment);
                             $location.path('/locales');
                         }
                         else{

@@ -10,6 +10,7 @@ angular
                 service.isAuthenticated = isAuthenticated;
                 service.logout = logout;
                 service.register = register;
+                service.getEstablisment = getEstablisment;
                 return service;
 
                 function register(establishment,establishment_account) {
@@ -31,7 +32,9 @@ angular
                 }
 
 
-
+                function getEstablisment(){
+                    return $cookies.get('establismentDondeEsHoy');
+                }
 
 
                 function isAuthenticated() {
@@ -70,7 +73,7 @@ angular
                     $cookies.remove('globalsDondeEsHoy');
                 }
 
-                function SetCredentials(username, password) {
+                function SetCredentials(username, password, establecimiento) {
                     var authdata = Base64.encode(username + ':' + password);
 
                     $rootScope.globals = {
@@ -82,6 +85,7 @@ angular
 
                     //$http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
                     $cookies.put('globalsDondeEsHoy', username);
+                    $cookies.put('establismentDondeEsHoy', establecimiento);
                 }
 
 

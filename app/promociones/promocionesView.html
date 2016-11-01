@@ -3,26 +3,38 @@
 </header>
 <div class="container">
     <div class="jumbotron">
-        <h2>Promociones</h2>
+        <h3>Promociones</h3>
         <div ng-if="promociones.length == 0" >
-            <h3>No administras ningun local por el momento</h3>
+            <h4>No tienes ninguna promcion activa.</h4>
         </div>
         <table class="table table-hover" ng-if="promociones.length >= 1">
             <thead>
                 <tr>
-                    <th>Ubicacion</th>
-                    <th>Telefono</th>
-                    <th>Promociones Activas</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Inicio</th>
+                    <th>Finaliza</th>
+                    <th>Local (ID)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="local in promociones">
-                    <td>{{local.zone}}</td>
-                    <td>{{local.telefono}}</td>
-                    <td>{{local.promos_events.length}}</td>
+                <tr ng-repeat="promo in promociones">
+                    <td>{{promo.id}}</td>
+                    <td>{{promo.name}}</td>
+                    <td>{{promo.description}}</td>
+                    <td>{{promo.start_date}}</td>
+                    <td>{{promo.due_date}}</td>
+                    <td>{{promo.local}}</td>
                 </tr>
                 
             </tbody>
         </table>
+        
+        
+        <b><h4>Agrega mas promociones</h4></b>
+        <p>
+            <a href="#!/promocionesAgregar" ><button type="button" class="btn btn-success btn-lg">Agregar</button></a>
+        </p>
     </div>
 </div>

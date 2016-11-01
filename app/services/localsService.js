@@ -17,12 +17,12 @@ angular.module('myApp')
                 };
 
 
-                var addLocal = function (key,zone,tel) {
+                var addLocal = function (key,zone,tel,establisment) {
                     var p = $http({
                         method: 'POST',
                         url: "http://kefon94-001-site1.etempurl.com/Locals/addLocal",
                         data: {
-                            "establishment": 1,
+                            "establishment": establisment,
                             "google_key": key,
                             "zone": zone,
                             "telefono": tel

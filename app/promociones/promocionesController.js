@@ -2,7 +2,7 @@
 angular.module('myApp')
 
 
-        .controller('promocionesCtrl', ['$scope', '$location', 'AuthenticationService', 'localsService', function ($scope, $location, AuthenticationService, localsService) {
+        .controller('promocionesCtrl', ['$scope', '$location', 'AuthenticationService', 'promocionesService', function ($scope, $location, AuthenticationService, promocionesService) {
                 $scope.Authenticated = AuthenticationService.isAuthenticated();
                 if (!$scope.Authenticated) {
                     $location.path('/index');
@@ -15,10 +15,11 @@ angular.module('myApp')
                 $scope.promociones = [];
                 $scope.misLocales = [];
 
-                localsService.localsByEstab(1).then(
+                var establecimiento = parseInt(AuthenticationService.getEstablisment());
+                promocionesService.promosByEstabl(establecimiento).then(
                         function (data) {
                             var result = data.data;
-                            $scope.misLocales = result.result;
+                            $scope.promociones = result.result;
                         },
                         function (err) {
 
